@@ -10,7 +10,7 @@
 	watch_filedir='/home/dtorma/Materia/testing/beans'
 
 # Path to log files directory
-	watchlog_location='/home/dtorma/Materia/testing/'
+	watchlog_location="${HOME}/.watchlog"
 
 # Log file of the main script
 	mainlog=${watchlog_location}'watch.log'
@@ -30,7 +30,11 @@
 	if [[ -d "${1}" ]]; then watch_filedir="${1}"; fi
 
 
-
+# Create log file location if it does not exist in /home/USERNAME/.watchlog
+	if [[ ! -d "${watchlog_location}" ]]
+	then
+		mkdir "${watchlog_location}"
+	fi
 
 # FUNCTIONS
 # Save the list of files of the specified watch_filedir directory into the specified log file
